@@ -135,6 +135,15 @@ Verify that the playlists have been created and populated with the tracks you sp
 
 ![Screenshot (22)](https://github.com/user-attachments/assets/ca1c1931-8536-4903-aa21-1585966b44f1)
 
+### Conclusion:
+By completing this project, you can efficiently automate the creation and management of Spotify playlists using Terraform and AWS EC2 instances. This method not only streamlines the process but also maintains consistency across your playlists. Feel free to adjust and personalize the playlists with different tracks to match any occasion or mood.
+
+## You can copy and paste the required files from:
+```
+https://github.com/pratikshaa-01/SPOTIFY-USING-TERRAFORM
+```
+
+
 
 
 

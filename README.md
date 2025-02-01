@@ -15,13 +15,20 @@ Before you begin, ensure you have the following installed and set up:
 
 ## Steps to Complete the Project
 
-### 1. Create a Terraform Project
-- Create a new directory for your Terraform project and navigate to it in your terminal:
+### 1. ### 1. Create an EC2 Instance on AWS
+1. **Log in to AWS Console**  
+   Go to [AWS Management Console](https://aws.amazon.com/console/) and log in.
+   
+   **Launch a New EC2 Instance**  
+   Click on **Launch Instance**.
+
+### 2. Create a Terraform Project
+Create a new directory for your Terraform project and navigate to it in your terminal:
   ```bash
   mkdir SPOTIFY
   cd SPOTIFY
-
-### 2. Define the Spotify Provider in provider.tf
+```
+### 3. Define the Spotify Provider in provider.tf
 Create a file named provider.tf and define the Spotify provider configuration:
   ```bash
 terraform {
@@ -39,28 +46,69 @@ provider "spotify" {
 }
   ```
 
-### 3. Get Spotify API Credentials
+### 4. Get Spotify API Credentials
 To interact with Spotify’s API, you need a Client ID and Client Secret. These are obtained when you create an application on the Spotify Developer Dashboard.
 
-### 4. Create Spotify Application
+### 5. Create Spotify Application
 Go to the Spotify Developer Dashboard and log in.
 Click on "Create an App".
 Fill in the required details such as:
 App Name: Pratiksha-Playlist
 App Description: Create multiple Spotify playlists using Terraform.
 Redirect URI: http://localhost:27228/spotify_callback
-![Screenshot (7)](https://github.com/user-attachments/assets/17d7bcd4-1173-4e75-88df-0ba5d86a8a8d)
+
+![Screenshot (6)](https://github.com/user-attachments/assets/cd39a813-d0a0-4e2d-93c9-211279afda4d)
+
+![Screenshot (7)](https://github.com/user-attachments/assets/d938dd7a-b6d9-4ad7-945b-fd76f8f05a1c)
+
+![Screenshot (8)](https://github.com/user-attachments/assets/544ed269-8645-4ce1-8865-9e639732b8e1)
+
 After creating the app, note down your Client ID and Client Secret
 
-![Screenshot (8)](https://github.com/user-attachments/assets/da66eb2d-cb73-4036-a32d-1a95e4826e02)
-![Screenshot (10)](https://github.com/user-
-![Screenshot (11)](https://github.com/user-attachments/assets/a41dad21-5d16-4b5d-868a-f1b8e677c087)
-attachments/assets/e048f739-f3b3-4453-91e2-8948720802a7)
-###n5. Store Your API Credentials
+![Screenshot (11)](https://github.com/user-attachments/assets/fd050caa-b7d1-4682-8a9c-1bf9582da285)
+
+
+### 6. Store Your API Credentials
 Create a .env file to store your Spotify credentials securely:
 ```bash
 SPOTIFY_CLIENT_ID=your-client-id
 SPOTIFY_CLIENT_SECRET=your-client-secret
  ```
+
+### 7. Start the Authorization Proxy
+Ensure Docker is running on your machine.
+
+Start the authorization proxy server by running:
+
+![Screenshot (12)](https://github.com/user-attachments/assets/0fd020da-071b-407d-8600-0d0f1e0a2d2a)
+
+This will generate a URL for authorization. Open the URL in your browser and log in to Spotify to authorize the app.
+
+![Screenshot (13)](https://github.com/user-attachments/assets/b17c9524-db08-476b-a5a7-d8850ff9d39e)
+
+
+After successful authorization, you should see a confirmation message, such as “Authorization Successful”.
+
+![Screenshot (14)](https://github.com/user-attachments/assets/57d3ad7a-d570-4e8d-9b5a-74936c3cb87d)
+
+### 8. Initialize and Apply Terraform Configuration
+Run the following commands to initialize and apply the Terraform configuration:
+``` bash
+terraform init
+```
+``` bash
+terraform apply
+```
+
+
+### 9. 9. Verify Playlists on Spotify
+After applying the Terraform configuration, log in to your Spotify account.
+Verify that the playlists have been created and populated with the tracks you specified in your Terraform code.
+
+![Uploading Screenshot (22).png…]()
+
+
+
+
 
 

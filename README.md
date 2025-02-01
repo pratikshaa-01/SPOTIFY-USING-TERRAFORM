@@ -15,12 +15,18 @@ Before you begin, ensure you have the following installed and set up:
 
 ## Steps to Complete the Project
 
-### 1. ### 1. Create an EC2 Instance on AWS
+### 1. Create an EC2 Instance on AWS
 1. **Log in to AWS Console**  
    Go to [AWS Management Console](https://aws.amazon.com/console/) and log in.
    
    **Launch a New EC2 Instance**  
    Click on **Launch Instance**.
+
+   **Configure Security Group**  
+   Add inbound rules to the security group:
+   - **HTTP**: Port 80 (for web access to the authorization page).
+   - **SSH**: Port 22 (for SSH access to the instance).
+   - **Custom TCP Rule**: Port `27228` (this is used by the authorization proxy server).
 
 ### 2. Create a Terraform Project
 Create a new directory for your Terraform project and navigate to it in your terminal:
@@ -91,6 +97,28 @@ After successful authorization, you should see a confirmation message, such as â
 
 ![Screenshot (14)](https://github.com/user-attachments/assets/57d3ad7a-d570-4e8d-9b5a-74936c3cb87d)
 
+### 8. Define Playlist Resources in playlist.tf
+Create a playlist.tf file to define your Spotify playlists.
+``` bash
+resource "spotify_playlist" "Bollywood" {
+  name   = "Bollywood"
+  tracks = ["5QW9K4A1gMnIi94YUxtsfM"]
+}
+
+data "spotify_search_track" "emi" {
+  artist = "Eminem"
+}
+
+resource "spotify_playlist" "slimShady" {
+  name   = "Slim Shady"
+  tracks = [
+    data.spotify_search_track.emi.tracks[0].id,
+    data.spotify_search_track.emi.tracks[1].id,
+    data.spotify_search_track.emi.tracks[2].id
+  ]
+}
+```
+
 ### 8. Initialize and Apply Terraform Configuration
 Run the following commands to initialize and apply the Terraform configuration:
 ``` bash
@@ -101,11 +129,12 @@ terraform apply
 ```
 
 
-### 9. 9. Verify Playlists on Spotify
+###  9. Verify Playlists on Spotify
 After applying the Terraform configuration, log in to your Spotify account.
 Verify that the playlists have been created and populated with the tracks you specified in your Terraform code.
 
-![Uploading Screenshot (22).pngâ€¦]()
+![Screenshot (22)](https://github.com/user-attachments/assets/ca1c1931-8536-4903-aa21-1585966b44f1)
+
 
 
 

@@ -37,7 +37,7 @@ provider "spotify" {
   # Configuration options
   api_key = var.api_key
 }
-
+  ```
 
 ### 3. Get Spotify API Credentials
 To interact with Spotify’s API, you need a Client ID and Client Secret. These are obtained when you create an application on the Spotify Developer Dashboard.
@@ -61,4 +61,6 @@ Create a .env file to store your Spotify credentials securely:
 ```bash
 SPOTIFY_CLIENT_ID=your-client-id
 SPOTIFY_CLIENT_SECRET=your-client-secret
+ ```
+
 
